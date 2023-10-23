@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
   // 1) Create a property/variable to store passed item
-  final Map<String,String> todo;
+  final Map<String,dynamic> todo;
+
+  final int index;
 
   // 2) Create the constructor of the class to receive the item
-  DetailsPage({required this.todo});
+  DetailsPage({required this.todo, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,14 @@ class DetailsPage extends StatelessWidget {
             Text(todo["name"]!),
             Text(todo["place"]!),
             Text(todo["desc"]!),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [ElevatedButton(onPressed: (){}, child: Text("Mark as Completed")), ElevatedButton(onPressed: (){}, child: Text("Delete Item"))],)
+            Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: [ElevatedButton(onPressed: (){
+                Navigator.pop(context,{"index":index, "action":"mark"});
+              }, child: todo["completed"] ? Text("Unmark Completion"):Text("Mark as Completed")),
+                ElevatedButton(onPressed: (){
+                  print("Delete ditekan untuk item index $index");
+                  Navigator.pop(context, {"index":index, "action":"del"});
+                }, child: Text("Delete Item"))],)
           ],
         ),
       ),

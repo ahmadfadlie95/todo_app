@@ -21,7 +21,7 @@ class AddPage extends StatelessWidget {
               print(toDoName.text);
               print(toDoDesc.text);
               print(place.text);
-              var newItem = {"name":toDoName.text, "place":place.text, "desc":toDoDesc.text};
+              var newItem = {"name":toDoName.text, "place":place.text, "desc":toDoDesc.text, "completed":false};
               Navigator.pop(context, newItem);
             }, child: Text("Add"))
           ],
