@@ -18,15 +18,22 @@ class AddPage extends StatelessWidget {
             TextField(controller: toDoDesc, decoration: InputDecoration(hintText: "Enter todo description")),
             TextField(controller: place, decoration: InputDecoration(hintText: "Enter place")),
             TextButton(onPressed: (){
-              print(toDoName.text);
-              print(toDoDesc.text);
-              print(place.text);
+               print(toDoName.text);
+               print(toDoDesc.text);
+               print(place.text);
               var newItem = {"name":toDoName.text, "place":place.text, "desc":toDoDesc.text, "completed":false};
-              Navigator.pop(context, newItem);
-            }, child: Text("Add"))
+              if(toDoName.text.isEmpty == true || toDoDesc.text.isEmpty == true || place.text.isEmpty == true) {
+                const snackBar = SnackBar(
+                    content: Text("All fields are required"));
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+               } else {
+                Navigator.pop(context, newItem);
+              }
+            }, child: Text("Add")),
           ],
         ),
       ),
     );
   }
 }
+
