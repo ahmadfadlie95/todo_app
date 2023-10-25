@@ -24,12 +24,8 @@ class DetailsPage extends StatelessWidget {
                 Navigator.pop(context,{"index":index, "action":"mark"});
               }, child: todo["completed"] ? Text("Unmark Completion"):Text("Mark as Completed")),
                 ElevatedButton(onPressed: (){
-                  showDialog(context: context, builder: (context){
-                  return AlertDialog(
-
-                  )
                   // print("Delete ditekan untuk item index $index");
-                  // Navigator.pop(context, {"index":index, "action":"del"});
+                  Navigator.pop(context, {"index":index, "action":"del"});
                 }, child: Text("Delete Item"))],)
           ],
         ),
