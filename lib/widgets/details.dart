@@ -44,8 +44,8 @@ class DetailsPage extends StatelessWidget {
                             TextButton(
                               child: Text("Delete"),
                               onPressed: () {
-                                Navigator.pop(context, {"action":"del"});
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                                Navigator.pop(context);
+                                Navigator.pop(context, {"index": index, "action":"del"});
                               },
                             ),
                           ],
